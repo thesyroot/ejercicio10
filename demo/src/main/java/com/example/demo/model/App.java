@@ -1,4 +1,4 @@
-package com.example.demo.entity;
+package com.example.demo.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,14 +7,13 @@ import lombok.*;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Tarea {
+public class App {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @NonNull
     private String nombre;
-
-    @NonNull
-    private Double valor;
+    private String descripcion;
+    private String correoResponsable;
+    @Column(unique = true)
+    private String apiKey;
 }
