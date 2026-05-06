@@ -1,0 +1,17 @@
+# Credentials
+demo/src/main/resources/application.properties
+
+# Build outputs
+demo/target/
+*.class
+*.jar
+*.war
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# OS
+Thumbs.db
+.DS_Store
