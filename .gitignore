@@ -1,5 +1,6 @@
 # Credentials
 demo/src/main/resources/application.properties
+.env
 
 # Build outputs
 demo/target/
