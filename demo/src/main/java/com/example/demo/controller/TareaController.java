@@ -1,8 +1,11 @@
 package com.example.demo.controller;
 
 import com.example.demo.entity.Tarea;
-import com.example.demo.repository.TareaRepository;
+import com.example.demo.service.TareaService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -12,15 +15,17 @@ import java.util.List;
 @RequiredArgsConstructor
 public class TareaController {
 
-    private final TareaRepository tareaRepository;
+    private final TareaService tareaService;
 
     @PostMapping
-    public Tarea crear(@RequestBody Tarea tarea) {
-        return tareaRepository.save(tarea);
+    public ResponseEntity<Tarea> crearTarea(@Valid @RequestBody Tarea tarea) {
+        Tarea tareaCreada = tareaService.crearTarea(tarea);
+        return ResponseEntity.status(HttpStatus.CREATED).body(tareaCreada);
     }
 
     @GetMapping
-    public List<Tarea> listar() {
-        return (List<Tarea>) tareaRepository.findAll();
+    public ResponseEntity<List<Tarea>> listarTareas() {
+        List<Tarea> tareas = tareaService.listarTareas();
+        return ResponseEntity.ok(tareas);
     }
 }
